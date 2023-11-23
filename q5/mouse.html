@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Mouse Event Handler</title>
+ <script>
+   function handleMouseEvent(event) {
+     var message;
+     switch (event.type) {
+       case 'mousedown':
+         message = 'Mouse down';
+         break;
+       case 'mouseup':
+         message = 'Mouse up';
+         break;
+       case 'click':
+         message = 'Mouse click';
+         break;
+       default:
+         message = 'Unknown event';
+     }
+     document.getElementById('message').textContent = message;
+   }
+ </script>
+</head>
+<body>
+ <button id="myButton">Click me</button>
+ <p id="message"></p>
+ <script>
+   var button = document.getElementById('myButton');
+   button.addEventListener('mousedown', handleMouseEvent);
+   button.addEventListener('mouseup', handleMouseEvent);
+   button.addEventListener('click', handleMouseEvent);
+ </script>
+</body>
+</html>
