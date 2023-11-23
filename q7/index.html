@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Display XML Content</title>
+    <script>
+        function loadXMLDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "sample.xml", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml) {
+            var xmlDoc = xml.responseXML;
+            var title = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+            var body = xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
+            document.getElementById("demo").innerHTML = title + "<br>" + body;
+        }
+    </script>
+</head>
+
+<body onload="loadXMLDoc()">
+    <p id="demo"></p>
+</body>
+
+</html>
