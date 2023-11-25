@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Factorial Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <form id="factorialForm">
+      Enter a number: <input type="number" id="number" required>
+      <input type="submit" value="Calculate Factorial">
+  </form>
+  <div id="result"></div>
+
+  <script>
+  $(document).ready(function(){
+      $("#factorialForm").on("submit", function(event){
+          event.preventDefault();
+          var number = $("#number").val();
+          $.post("calculateFactorial.php", {number: number}, function(data){
+              $("#result").html(data);
+          });
+      });
+  });
+  </script>
+</body>
+</html>
